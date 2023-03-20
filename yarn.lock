@@ -2350,6 +2350,11 @@
   dependencies:
     "@hapi/hoek" "^9.0.0"
 
+"@hpcc-js/wasm@^0.3.13":
+  version "0.3.15"
+  resolved "https://registry.yarnpkg.com/@hpcc-js/wasm/-/wasm-0.3.15.tgz#d93d5a016bd2d0d677669ddb45cc7b27df43029e"
+  integrity sha512-3shvfM9+c2nnZNLp7Mh6FS0z+Br3y6JKkslK2lit3Q2t/lsr8SCnezhUMhKRkLIccUTFl3zHu8Am8G4lXbazMw==
+
 "@humanwhocodes/config-array@^0.5.0":
   version "0.5.0"
   resolved "https://registry.npmjs.org/@humanwhocodes/config-array/-/config-array-0.5.0.tgz#1407967d4c6eecd7388f83acf1eaf4d0c6e58ef9"

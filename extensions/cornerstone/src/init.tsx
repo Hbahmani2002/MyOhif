@@ -77,17 +77,17 @@ export default async function init({
 
   window.services = servicesManager.services;
 
-  if (
-    appConfig.showWarningMessageForCrossOrigin &&
-    !window.crossOriginIsolated
-  ) {
-    uiNotificationService.show({
-      title: 'Cross Origin Isolation',
-      message:
-        'Cross Origin Isolation is not enabled, volume rendering will not work (e.g., MPR)',
-      type: 'warning',
-    });
-  }
+  // if (
+  //   appConfig.showWarningMessageForCrossOrigin &&
+  //   !window.crossOriginIsolated
+  // ) {
+  //   uiNotificationService.show({
+  //     title: 'Cross Origin Isolation',
+  //     message:
+  //       'Cross Origin Isolation is not enabled, volume rendering will not work (e.g., MPR)',
+  //     type: 'warning',
+  //   });
+  // }
 
   if (
     appConfig.showCPUFallbackMessage &&

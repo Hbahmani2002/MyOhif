@@ -13,7 +13,7 @@ function buildInstanceWadoUrl(config, instance) {
 
   const paramString = params.join('&');
 
-  return `${config.wadoUriRoot}?${paramString}`;
+  return `${window.config.dataSources[0].configuration.wadoUriRoot}?${paramString}`;
 }
 
 /**

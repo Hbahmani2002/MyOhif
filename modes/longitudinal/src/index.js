@@ -119,7 +119,20 @@ function modeFactory() {
         'Layout',
         'MPR',
         'Crosshairs',
-        'MoreTools',
+
+        'Reset',
+        'rotate-right',
+        'flip-horizontal',
+        'StackImageSync',
+        'ReferenceLines',
+        'StackScroll',
+        'invert',
+        'Probe',
+        'cine',
+        'Angle',
+
+        'Rectangle',
+        'TagBrowser',
       ]);
     },
     onModeExit: ({ servicesManager }) => {

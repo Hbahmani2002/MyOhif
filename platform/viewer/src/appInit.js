@@ -29,7 +29,38 @@ async function appInit(appConfigOrFunc, defaultExtensions, defaultModes) {
       ? appConfigOrFunc({ servicesManager })
       : appConfigOrFunc),
   };
+  let url = new URL(window.location.href);
+  let params = new URLSearchParams(url.search);
 
+  let config = {};
+  if (window) {
+    config = window.config || {};
+  }
+
+  let StudyInstanceUIDs = params.get('StudyInstanceUIDs');
+  let address = window.config.RISE_SERVICE + 'pacs/url/' + StudyInstanceUIDs;
+  if (config.RISE_ENTEGRASYON && StudyInstanceUIDs) {
+    await fetch(address, {})
+      .then(res => res.json())
+      .then(res => {
+        /** Create App */
+
+        window.config.dataSources = [
+          {
+            configuration: {
+              name: 'PACS',
+              wadoUriRoot: window.config.RISE_SERVICE + res.wadoUriRoot,
+              qidoRoot: window.config.RISE_SERVICE + res.qidoRoot,
+              wadoRoot: window.config.RISE_SERVICE + res.wadoRoot,
+              qidoSupportsIncludeField: true,
+              imageRendering: 'wadouri',
+              thumbnailRendering: 'wadouri',
+              enableStudyLazyLoad: true,
+            },
+          },
+        ];
+      });
+  }
   const commandsManagerConfig = {
     getAppState: () => {},
   };

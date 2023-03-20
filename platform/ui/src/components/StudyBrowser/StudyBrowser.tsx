@@ -33,82 +33,52 @@ const StudyBrowser = ({
 
   const getTabContent = () => {
     const tabData = tabs.find(tab => tab.name === activeTabName);
-    return tabData.studies.map(
-      ({
-        studyInstanceUid,
-        date,
-        description,
-        numInstances,
-        modalities,
-        displaySets,
-      }) => {
-        const isExpanded = expandedStudyInstanceUIDs.includes(studyInstanceUid);
-        return (
-          <React.Fragment key={studyInstanceUid}>
-            <StudyItem
-              date={date}
-              description={description}
-              numInstances={numInstances}
-              modalities={modalities}
-              trackedSeries={getTrackedSeries(displaySets)}
-              isActive={isExpanded}
-              onClick={() => {
-                onClickStudy(studyInstanceUid);
-              }}
-              data-cy="thumbnail-list"
-            />
-            {isExpanded && displaySets && (
-              <ThumbnailList
-                thumbnails={displaySets}
-                activeDisplaySetInstanceUIDs={activeDisplaySetInstanceUIDs}
-                onThumbnailClick={onClickThumbnail}
-                onThumbnailDoubleClick={onDoubleClickThumbnail}
-                onClickUntrack={onClickUntrack}
+
+    return tabData.studies
+      .slice(tabData.studies.length - 1, tabData.studies.length)
+      .map(
+        ({
+          studyInstanceUid,
+          date,
+          description,
+          numInstances,
+          modalities,
+          displaySets,
+        }) => {
+          const isExpanded = expandedStudyInstanceUIDs.includes(
+            studyInstanceUid
+          );
+          return (
+            <React.Fragment key={studyInstanceUid}>
+              <StudyItem
+                date={date}
+                description={description}
+                numInstances={numInstances}
+                modalities={modalities}
+                trackedSeries={getTrackedSeries(displaySets)}
+                isActive={isExpanded}
+                onClick={() => {
+                  onClickStudy(studyInstanceUid);
+                }}
+                data-cy="thumbnail-list"
               />
-            )}
-          </React.Fragment>
-        );
-      }
-    );
+              {isExpanded && displaySets && (
+                <ThumbnailList
+                  thumbnails={displaySets}
+                  activeDisplaySetInstanceUIDs={activeDisplaySetInstanceUIDs}
+                  onThumbnailClick={onClickThumbnail}
+                  onThumbnailDoubleClick={onDoubleClickThumbnail}
+                  onClickUntrack={onClickUntrack}
+                />
+              )}
+            </React.Fragment>
+          );
+        }
+      );
   };
 
   return (
     <React.Fragment>
-      <div
-        className="flex flex-row items-center justify-center h-16 p-4 border-b w-100 border-secondary-light bg-primary-dark"
-        data-cy={'studyBrowser-panel'}
-      >
-        <ButtonGroup variant="outlined" color="secondary" splitBorder={false}>
-          {tabs.map(tab => {
-            const { name, label, studies } = tab;
-            const isActive = activeTabName === name;
-            const isDisabled = !studies.length;
-            // Apply the contrasting color for brighter button color visibility
-            const classStudyBrowser = customizationService?.getModeCustomization(
-              'class:StudyBrowser'
-            ) || {
-              true: 'default',
-              false: 'default',
-            };
-            const color = classStudyBrowser[`${isActive}`];
-            return (
-              <Button
-                key={name}
-                className={'text-white text-base p-2 min-w-18'}
-                size="initial"
-                color={color}
-                bgColor={isActive ? 'bg-primary-main' : 'bg-black'}
-                onClick={() => {
-                  onClickTab(name);
-                }}
-                disabled={isDisabled}
-              >
-                {t(label)}
-              </Button>
-            );
-          })}
-        </ButtonGroup>
-      </div>
       <div className="flex flex-col flex-1 overflow-auto">
         {getTabContent()}
       </div>

@@ -234,7 +234,6 @@ function PanelStudyBrowser({
 
   return (
     <StudyBrowser
-      tabs={tabs}
       servicesManager={servicesManager}
       activeTabName={activeTabName}
       onDoubleClickThumbnail={onDoubleClickThumbnailHandler}
