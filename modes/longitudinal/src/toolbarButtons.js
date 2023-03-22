@@ -394,9 +394,9 @@ const toolbarButtons = [
   },
   {
     id: 'StackImageSync',
-    type: 'ohif.radioGroup',
+    type: 'ohif.action',
     props: {
-      type: 'tool',
+      type: 'toggle',
       icon: 'link',
       label: 'Stack Image Sync',
       commands: [
