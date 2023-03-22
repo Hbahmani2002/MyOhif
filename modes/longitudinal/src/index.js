@@ -120,7 +120,6 @@ function modeFactory() {
         'MPR',
         'Crosshairs',
 
-        'Reset',
         'rotate-right',
         'flip-horizontal',
         'StackImageSync',
@@ -133,6 +132,7 @@ function modeFactory() {
 
         'Rectangle',
         'TagBrowser',
+        'Reset',
       ]);
     },
     onModeExit: ({ servicesManager }) => {
