@@ -74,7 +74,7 @@ const SidePanel = ({
 }) => {
   const { t } = useTranslation('SidePanel');
 
-  const [panelOpen, setPanelOpen] = useState(activeTabIndexProp !== null);
+  const [panelOpen, setPanelOpen] = useState(activeTabIndexProp == null);
   const [activeTabIndex, setActiveTabIndex] = useState(activeTabIndexProp || 0);
   const swiperRef = useRef() as any;
   const [swiper, setSwiper] = useState<any>();
@@ -203,7 +203,7 @@ const SidePanel = ({
               />
               {/* Todo: ass secondary label here */}
               <span className="text-primary-active">
-                {tabs.length === 1 && t(tabs[activeTabIndex].label) as string}
+                {tabs.length === 1 && (t(tabs[activeTabIndex].label) as string)}
               </span>
             </Button>
           </div>
