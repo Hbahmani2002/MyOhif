@@ -73,6 +73,14 @@ const UserPreferences = ({
     </>
   );
 
+  const onSaveRow = e => {
+    localStorage.setItem('defaultRow', e.target.value);
+  };
+
+  const onSaveColumn = e => {
+    localStorage.setItem('defaultColumn', e.target.value);
+  };
+
   return (
     <div className="p-2">
       <Section title={t('General')}>
@@ -86,6 +94,31 @@ const UserPreferences = ({
             options={availableLanguages}
             value={state.language}
           />
+        </div>
+        <br></br>
+        <div className="flex flex-row">
+          <label htmlFor="layout-text" className="layoutLabel">
+            Default Layout(Row x Column): &nbsp;&nbsp;
+          </label>
+          <input
+            type="number"
+            defaultValue={localStorage.getItem('defaultRow')}
+            style={{ width: 50, color: 'black' }}
+            max="4"
+            min="1"
+            placeholder="Row: 1"
+            onChange={onSaveRow}
+          ></input>{' '}
+          &nbsp;
+          <input
+            type="number"
+            defaultValue={localStorage.getItem('defaultColumn')}
+            style={{ width: 50, color: 'black' }}
+            max="4"
+            min="1"
+            placeholder="Column: 1"
+            onChange={onSaveColumn}
+          ></input>
         </div>
       </Section>
       <Section title={t('Hotkeys')}>

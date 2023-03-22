@@ -34,8 +34,14 @@ const defaultProtocol = {
       viewportStructure: {
         layoutType: 'grid',
         properties: {
-          rows: 1,
-          columns: 1,
+          rows:
+            localStorage.getItem('defaultRow') == undefined
+              ? 1
+              : parseInt(localStorage.getItem('defaultRow')),
+          columns:
+            localStorage.getItem('defaultColumn') == undefined
+              ? 1
+              : parseInt(localStorage.getItem('defaultColumn')),
         },
       },
       viewports: [
