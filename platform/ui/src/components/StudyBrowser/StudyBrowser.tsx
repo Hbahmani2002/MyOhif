@@ -51,9 +51,9 @@ const StudyBrowser = ({
           return (
             <React.Fragment key={studyInstanceUid}>
               <StudyItem
-                date={date}
+                date={localStorage.getItem('date')}
                 description={description}
-                numInstances={numInstances}
+                numInstances={1}
                 modalities={modalities}
                 trackedSeries={getTrackedSeries(displaySets)}
                 isActive={isExpanded}

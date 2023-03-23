@@ -26,7 +26,7 @@ const ViewportActionBar = ({
     seriesDescription,
     patientInformation,
   } = studyData;
-
+  localStorage.setItem('date', studyData.studyDate);
   const {
     patientName,
     patientSex,
